@@ -197,5 +197,99 @@ namespace RomanNumerals.Test
             Assert.Equal(expectedResult, result);
         }
 
+        [Fact]
+        public void Number_891_is_DCCCXCI()
+        {
+            var engine = new Numeralizer();
+            var input = "891";
+            var expectedResult = "DCCCXCI";
+
+            var result = engine.RomanNumEquv(input);
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Number_1000_is_M()
+        {
+            var engine = new Numeralizer();
+            var input = "1000";
+            var expectedResult = "M";
+
+            var result = engine.RomanNumEquv(input);
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Number_1004_is_MIV()
+        {
+            var engine = new Numeralizer();
+            var input = "1004";
+            var expectedResult = "MIV";
+
+            var result = engine.RomanNumEquv(input);
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Number_1006_is_MVI()
+        {
+            var engine = new Numeralizer();
+            var input = "1006";
+            var expectedResult = "MVI";
+
+            var result = engine.RomanNumEquv(input);
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Number_1023_is_MXXIII()
+        {
+            var engine = new Numeralizer();
+            var input = "1023";
+            var expectedResult = "MXXIII";
+
+            var result = engine.RomanNumEquv(input);
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Number_2014_is_MMXIV()
+        {
+            var engine = new Numeralizer();
+            var input = "2014";
+            var expectedResult = "MMXIV";
+
+            var result = engine.RomanNumEquv(input);
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Number_3999_is_MMMCMXCIX()
+        {
+            var engine = new Numeralizer();
+            var input = "3999";
+            var expectedResult = "MMMCMXCIX";
+
+            var result = engine.RomanNumEquv(input);
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Number_Is_Larger_than_Possible_With_Roman_Numerals()
+        {
+            var engine = new Numeralizer();
+            var input = "4000";
+            var expectedResult = "MMMCMXCIX";
+
+            Assert.Throws<NumberTooLargeException>(() => engine.RomanNumEquv(input));
+        }
+
     }
 }
