@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace RomanNumerals
@@ -11,6 +10,16 @@ namespace RomanNumerals
         string[] tens = new string[] { "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C" };
         string[] hundreds = new string[] { "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM", "M" };
         string[] thousands = new string[] { "M", "MM", "MMM" };
+        Dictionary<string, int> RomanNumStuff = new Dictionary<string, int>
+        {
+            { "I", 1 },
+            {"V", 5 },
+            {"X", 10 },
+            {"L", 50 },
+            {"C", 100 },
+            {"D", 500 },
+            {"M", 1000 }
+        };
         public string RomanNumEquv(string numberInput)
         {
             try
@@ -59,6 +68,36 @@ namespace RomanNumerals
             {
                 throw new Exception();
             }
+        }
+
+        public int NormalNumEquiv(string romanNum)
+        {
+            //var s = Array.IndexOf(singles, romanNum);
+
+            //return (s+1).ToString();
+            int result = 0;
+            var romanCharArr = romanNum.ToCharArray();
+            for (int i = 0; i < romanCharArr.Length; i++)
+            {
+                int numberToAdd = 0;
+                if(i > 0)
+                {
+                    if (RomanNumStuff[romanCharArr[i-1].ToString()] < RomanNumStuff[romanCharArr[i].ToString()])
+                    {
+                        numberToAdd = RomanNumStuff[romanCharArr[i].ToString()] - (RomanNumStuff[romanCharArr[i - 1].ToString()]*2);
+                    }
+                    else
+                    {
+                        numberToAdd = RomanNumStuff[romanCharArr[i].ToString()];
+                    }
+                }
+                else
+                {
+                   numberToAdd = RomanNumStuff[romanCharArr[i].ToString()];
+                }
+                result = result + numberToAdd;
+            }
+            return result;
         }
     }
 }
